@@ -1,1 +1,17 @@
 _site/
+Demo/build/*
+Demo/DerivedData/*
+lib/*
+*.swp
+*~.nib
+
+.DS_Store
+*.pbxuser
+*.perspective
+*.perspective3
+*.xcworkspace
+*.mode1
+*.mode1v3
+*.mode2v3
+
+xcuserdata
