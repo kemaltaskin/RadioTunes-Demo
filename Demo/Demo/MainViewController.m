@@ -68,14 +68,6 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
         [_radioSubtitles addObject:@"http aac+ pls stream"];
         [_radioStations addObject:@"http://46.20.4.43:8130/listen.pls"];
         
-        [_radioNames addObject:@"Hot Mix Radio"];
-        [_radioSubtitles addObject:@"http aac+ m3u stream"];
-        [_radioStations addObject:@"http://dir.xiph.org/listen/253243/listen.m3u"];
-        
-        [_radioNames addObject:@"Hot Mix Radio"];
-        [_radioSubtitles addObject:@"http aac+ xspf stream"];
-        [_radioStations addObject:@"http://dir.xiph.org/listen/253243/listen.xspf"];
-        
         [_radioNames addObject:@"181.FM Chilled"];
         [_radioSubtitles addObject:@"http mp3 pls stream"];
         [_radioStations addObject:@"http://www.181.fm/winamp.pls?station=181-chilled&style=mp3&description=Chilled%20Out&file=181-chilled.pls"];
