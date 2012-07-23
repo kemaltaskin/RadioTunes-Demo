@@ -21,10 +21,7 @@ typedef enum {
     kHTTPStateAudioStreaming
 } HTTPState;
 
-@interface HTTPRadio : Radio {
-    NSString *_httpUserAgent;
-    NSUInteger _httpTimeout;
-}
+@interface HTTPRadio : Radio
 
 @property (nonatomic, copy) NSString *httpUserAgent;
 @property (nonatomic, assign) NSUInteger httpTimeout;

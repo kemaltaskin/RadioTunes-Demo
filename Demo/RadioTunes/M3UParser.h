@@ -8,8 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "PlaylistParserProtocol.h"
 
-@interface M3UParser : NSObject<PlaylistParserProtocol> {
-
-}
+@interface M3UParser : NSObject<PlaylistParserProtocol>
 
 @end

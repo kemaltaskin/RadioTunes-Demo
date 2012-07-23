@@ -8,12 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
-@interface AudioPacket : NSObject {
-    NSData *_data;
-    AudioStreamPacketDescription _audioDescription;
-    
-    NSUInteger _consumedLength;
-}
+@interface AudioPacket : NSObject
 
 @property (nonatomic, retain) NSData *data;
 @property (nonatomic, assign) AudioStreamPacketDescription audioDescription;

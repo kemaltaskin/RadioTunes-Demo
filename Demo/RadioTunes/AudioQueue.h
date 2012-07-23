@@ -9,9 +9,7 @@
 
 @class AudioPacket;
 
-@interface AudioQueue : NSObject {
-    NSMutableArray *_audioPackets;
-}
+@interface AudioQueue : NSObject
 
 - (AudioPacket *)pop;
 - (AudioPacket *)peak;

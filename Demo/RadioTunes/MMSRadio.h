@@ -8,8 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "Radio.h"
 
-@interface MMSRadio : Radio {
-
-}
+@interface MMSRadio : Radio
 
 @end
