@@ -5,7 +5,7 @@ RadioTunes SDK is a radio streaming framework for iOS developers with support fo
 
 ![image](http://dl.dropbox.com/u/1413757/RadioTunes/2.png)
 
-###You can purchase a license with the full source code at [http://radiotunessdk.com](http://radiotunessdk.com).
+###You can purchase a license with the full source code at [http://binpress.com](http://www.binpress.com/app/radiotunes-sdk-for-ios/596).
 
 # Features
 
