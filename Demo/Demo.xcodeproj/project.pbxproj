@@ -40,6 +40,11 @@
 		0AAC5962155D3FEF008D02C2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC593B155D3B87008D02C2 /* libz.dylib */; };
 		0AAC5971155D5B13008D02C2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC596F155D5B13008D02C2 /* Icon.png */; };
 		0AAC5972155D5B13008D02C2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC5970155D5B13008D02C2 /* Icon@2x.png */; };
+		0AEAC3CA16109B1A00AEAB20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */; };
+		0AEAC3CB16109B1A00AEAB20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C816109B1A00AEAB20 /* Default.png */; };
+		0AEAC3CC16109B1A00AEAB20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C916109B1A00AEAB20 /* Default@2x.png */; };
+		0AEAC3CF16109B2200AEAB20 /* bg-i5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3CE16109B2200AEAB20 /* bg-i5.png */; };
+		0AEAC3D116109B8700AEAB20 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +144,11 @@
 		0AAC5960155D3F10008D02C2 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		0AAC596F155D5B13008D02C2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		0AAC5970155D5B13008D02C2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0AEAC3C816109B1A00AEAB20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0AEAC3C916109B1A00AEAB20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		0AEAC3CE16109B2200AEAB20 /* bg-i5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-i5.png"; sourceTree = "<group>"; };
+		0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEAC3D116109B8700AEAB20 /* MediaPlayer.framework in Frameworks */,
 				0AAC5962155D3FEF008D02C2 /* libz.dylib in Frameworks */,
 				0AAC593A155D3B81008D02C2 /* libxml2.dylib in Frameworks */,
 				0AAC5938155D3B6E008D02C2 /* SystemConfiguration.framework in Frameworks */,
@@ -182,6 +193,7 @@
 		0AAC58C7155D3A65008D02C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */,
 				0AAC593B155D3B87008D02C2 /* libz.dylib */,
 				0AAC5939155D3B81008D02C2 /* libxml2.dylib */,
 				0AAC5937155D3B6E008D02C2 /* SystemConfiguration.framework */,
@@ -345,6 +357,7 @@
 		0AAC593F155D3E61008D02C2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC3CE16109B2200AEAB20 /* bg-i5.png */,
 				0AAC5940155D3E61008D02C2 /* bg.png */,
 				0AAC5941155D3E61008D02C2 /* bg@2x.png */,
 				0AAC5942155D3E61008D02C2 /* knob.png */,
@@ -368,6 +381,9 @@
 		0AAC596E155D5B13008D02C2 /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */,
+				0AEAC3C816109B1A00AEAB20 /* Default.png */,
+				0AEAC3C916109B1A00AEAB20 /* Default@2x.png */,
 				0AAC596F155D5B13008D02C2 /* Icon.png */,
 				0AAC5970155D5B13008D02C2 /* Icon@2x.png */,
 			);
@@ -445,6 +461,10 @@
 				0AAC5961155D3F10008D02C2 /* MainWindow.xib in Resources */,
 				0AAC5971155D5B13008D02C2 /* Icon.png in Resources */,
 				0AAC5972155D5B13008D02C2 /* Icon@2x.png in Resources */,
+				0AEAC3CA16109B1A00AEAB20 /* Default-568h@2x.png in Resources */,
+				0AEAC3CB16109B1A00AEAB20 /* Default.png in Resources */,
+				0AEAC3CC16109B1A00AEAB20 /* Default@2x.png in Resources */,
+				0AEAC3CF16109B2200AEAB20 /* bg-i5.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +546,7 @@
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = External/ffmpeg/include;
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RadioTunes\"",
@@ -547,7 +567,7 @@
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = External/ffmpeg/include;
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RadioTunes\"",

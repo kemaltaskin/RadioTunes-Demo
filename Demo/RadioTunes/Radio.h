@@ -19,7 +19,7 @@ typedef struct {
     AudioQueueRef queue;
     AudioQueueBufferRef queueBuffers[NUM_AQ_BUFS];
     AudioStreamPacketDescription *packetDescriptions;
-    AudioQueue *audioQueue;
+    __unsafe_unretained AudioQueue *audioQueue;
     BOOL started;
     BOOL playing;
     BOOL paused;

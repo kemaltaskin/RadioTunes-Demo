@@ -8,6 +8,7 @@
 #import "MainViewController.h"
 #import "MMSRadio.h"
 #import "HTTPRadio.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionState) {
     MainViewController *mainViewController = (MainViewController *)inUserData;
@@ -27,6 +28,7 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
 @implementation MainViewController
 
 @synthesize tableview = _tableview;
+@synthesize bgImageView = _bgImageView;
 @synthesize volumeSlider = _volumeSlider;
 @synthesize playButton = _playButton;
 @synthesize statusLabel = _statusLabel;
@@ -83,6 +85,7 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     [_radio release];
     
     [_tableview release];
+    [_bgImageView release];
     [_volumeSlider release];
     [_playButton release];
     [_statusLabel release];
@@ -102,8 +105,12 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if([[UIScreen mainScreen] scale] >= 2.0 && [[UIScreen mainScreen] bounds].size.height > 480) {
+        [_bgImageView setImage:[UIImage imageNamed:@"bg-i5.png"]];
+    }
+    
     [_playButton addTarget:self action:@selector(playButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [_statusLabel setText:@"Status: Stopped"];
+    [_statusLabel setText:@""];
     [_titleLabel setText:@""];
     
     [_volumeSlider setThumbImage:[UIImage imageNamed:@"knob.png"] forState:UIControlStateNormal];
@@ -150,6 +157,7 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     [super viewDidUnload];
     
     self.tableview = nil;
+    self.bgImageView = nil;
     self.volumeSlider = nil;
     self.playButton = nil;
     self.statusLabel = nil;
@@ -339,6 +347,12 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
 
 - (void)radioTitleChanged:(Radio *)radio {
     [_titleLabel setText:[NSString stringWithFormat:@"Now Playing: %@", [radio radioTitle]]];
+    
+    if(NSClassFromString(@"MPNowPlayingInfoCenter")) {
+        /* we're on iOS 5, so set up the now playing center */
+        NSDictionary *trackInfo = [NSDictionary dictionaryWithObject:[radio radioTitle] forKey:MPMediaItemPropertyTitle];
+        [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = trackInfo;
+    }
 }
 
 @end

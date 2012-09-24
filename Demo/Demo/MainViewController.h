@@ -10,6 +10,7 @@
 
 @interface MainViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,RadioDelegate> {
     UITableView *_tableview;
+    UIImageView *_bgImageView;
     NSInteger _currentRadio;
     
     UISlider *_volumeSlider;
@@ -25,6 +26,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableview;
+@property (nonatomic, retain) IBOutlet UIImageView *bgImageView;
 @property (nonatomic, retain) IBOutlet UISlider *volumeSlider;
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
 @property (nonatomic, retain) IBOutlet UILabel *statusLabel;
