@@ -3,6 +3,8 @@ RadioTunes SDK for iOS
 
 RadioTunes SDK is a radio streaming framework for iOS developers with support for the http and mms protocols. Behind the scenes RadioTunes relies on the iOS AudioQueue framework and the open source LGPL licensed FFmpeg library. The demo project will only play radio streams for a limited time only.
 
+![sale](http://dl.dropbox.com/u/1413757/Binpress/YLABS15.jpg)
+
 ![image](http://dl.dropbox.com/u/1413757/RadioTunes/2.png)
 
 ###You can purchase a license with the full source code at [http://binpress.com](http://www.binpress.com/app/radiotunes-sdk-for-ios/596).
