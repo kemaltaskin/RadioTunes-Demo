@@ -1,11 +1,15 @@
-RadioTunes SDK for iOS
+A Powerful Radio Streaming SDK for iOS App Developers!
 ===
 
-RadioTunes SDK is a radio streaming framework for iOS developers with support for the http and mms protocols. Behind the scenes RadioTunes relies on the iOS AudioQueue framework and the open source LGPL licensed FFmpeg library. The demo project will only play radio streams for a limited time only.
+RadioTunes SDK is written for iOS developers who want to add radio streaming functionality to their app using a couple lines of code. Behind the scenes RadioTunes relies on the iOS AudioQueue framework and the open source LGPL licensed FFmpeg library.
 
-![image](http://dl.dropbox.com/u/1413757/RadioTunes/2.png)
+If your app does not require mms/wma codec functionality you can also use RadioTunes SDK without including the FFmpeg library. The code for mms streaming is completely separated from the code for http streaming so that you can choose which portions of code you want to include in your project.
 
-###You can purchase a license with the full source code at [http://binpress.com](http://www.binpress.com/app/radiotunes-sdk-for-ios/596).
+Note: The demo project will only play radio streams for a limited time only.
+
+![banner](http://dl.dropbox.com/u/1413757/RadioTunes/banner.png)
+
+###You can purchase a commercial license with the full source code at [Binpress](http://www.binpress.com/app/radiotunes-sdk-for-ios/596).
 
 # Features
 
@@ -14,11 +18,13 @@ RadioTunes SDK is a radio streaming framework for iOS developers with support fo
 - PLS, M3U, XSPF and direct URL support.
 - Parsing of Shoutcast/Icecast metadata.
 - Automatic handling of interruptions like incoming phone calls.
-- Background play on iOS 4.
+- Background playback.
+- Realtime audio recording.
+- Bandwidth usage statistics.
 - Robust error handling.
 - Auto reconnect feature.
 - Works on Edge/3G/WiFi.
 
 # Screenshot of Demo App
 
-![image](http://dl.dropbox.com/u/1413757/RadioTunes/1.png)
+![screenshot](http://dl.dropbox.com/u/1413757/RadioTunes/screenshot.png)
