@@ -1,38 +1,20 @@
 //
 //  MainViewController.h
-//  Radio
 //
 //  Copyright 2011 Yakamoz Labs. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import <RadioTunes/RadioTunes.h>
 
-@interface MainViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,RadioDelegate> {
-    UITableView *_tableview;
-    UIImageView *_bgImageView;
-    NSInteger _currentRadio;
-    
-    UISlider *_volumeSlider;
-    UIButton *_playButton;
-    UILabel *_statusLabel;
-    UILabel *_titleLabel;
-
-    Radio *_radio;
-    
-    NSMutableArray *_radioStations;
-    NSMutableArray *_radioNames;
-    NSMutableArray *_radioSubtitles;
-}
+@interface MainViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,YLRadioDelegate,YLAudioSessionDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableview;
 @property (nonatomic, retain) IBOutlet UIImageView *bgImageView;
 @property (nonatomic, retain) IBOutlet UISlider *volumeSlider;
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
+@property (nonatomic, retain) IBOutlet UIButton *recordButton;
 @property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
-
-- (void)beginInterruption;
-- (void)endInterruption;
 
 @end

@@ -1,19 +1,19 @@
 //
-//  AppDelegate.h
+//  YLAppDelegate.h
 //  Demo
 //
-//  Created by Kemal Taskin on 5/11/12.
-//  Copyright (c) 2012 Yakamoz Labs. All rights reserved.
+//  Copyright (c) 2013 Yakamoz Labs. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @class MainViewController;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate> {
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    UINavigationController *_navController;
     MainViewController *_mainViewController;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (strong, nonatomic) UIWindow *window;
 
 @end

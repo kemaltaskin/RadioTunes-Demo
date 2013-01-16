@@ -6,23 +6,26 @@
 //
 
 #import "MainViewController.h"
-#import "MMSRadio.h"
-#import "HTTPRadio.h"
+#import "RecordingsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionState) {
-    MainViewController *mainViewController = (MainViewController *)inUserData;
-	if(interruptionState == kAudioSessionBeginInterruption) {
-        [mainViewController beginInterruption];
-	} else if(interruptionState == kAudioSessionEndInterruption) {
-        AudioSessionSetActive(true);
-        [mainViewController endInterruption];
-	}
+@interface MainViewController() {
+    NSInteger _currentRadio;
+    NSInteger _recordingCounter;
+    
+    YLRadio *_radio;
+    
+    NSMutableArray *_radioStations;
+    NSMutableArray *_radioNames;
+    NSMutableArray *_radioSubtitles;
+    NSMutableArray *_recordings;
 }
 
-@interface MainViewController(Private)
+- (void)recordingsTapped;
 - (void)playButtonTapped;
+- (void)recordButtonTapped;
 - (void)volumeSliderMoved:(id)sender;
+
 @end
 
 @implementation MainViewController
@@ -31,6 +34,7 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
 @synthesize bgImageView = _bgImageView;
 @synthesize volumeSlider = _volumeSlider;
 @synthesize playButton = _playButton;
+@synthesize recordButton = _recordButton;
 @synthesize statusLabel = _statusLabel;
 @synthesize titleLabel = _titleLabel;
 
@@ -39,12 +43,20 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     if (self) {
         self.title = @"RadioTunes";
         
+        UIBarButtonItem *rButton = [[[UIBarButtonItem alloc] initWithTitle:@"Recordings"
+                                                                     style:UIBarButtonItemStyleDone
+                                                                    target:self
+                                                                    action:@selector(recordingsTapped)] autorelease];
+        self.navigationItem.rightBarButtonItem = rButton;
+        
         _radio = nil;
         _currentRadio = -1;
+        _recordingCounter = 1;
         
         _radioStations = [[NSMutableArray alloc] init];
         _radioNames = [[NSMutableArray alloc] init];
         _radioSubtitles = [[NSMutableArray alloc] init];
+        _recordings = [[NSMutableArray alloc] init];
         
         [_radioNames addObject:@"Show Radyo"];
         [_radioSubtitles addObject:@"mms wma stream"];
@@ -54,13 +66,13 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
         [_radioSubtitles addObject:@"mms wma stream"];
         [_radioStations addObject:@"mms://wstream5a.di.fm/vocaltrance"];
         
-        [_radioNames addObject:@"Computer America"];
-        [_radioSubtitles addObject:@"http mp3 m3u stream"];
-        [_radioStations addObject:@"http://player.warpradio.com/ice/BTRN.m3u"];
-        
-        [_radioNames addObject:@"q107 Toronto"];
+        [_radioNames addObject:@"Boost.FM"];
         [_radioSubtitles addObject:@"http mp3 stream"];
-        [_radioStations addObject:@"http://1392.live.streamtheworld.com:80/CILQFM_SC"];
+        [_radioStations addObject:@"http://108.168.244.242:8000/stream/1/"];
+        
+        [_radioNames addObject:@"BeatLounge"];
+        [_radioSubtitles addObject:@"http mp3 stream"];
+        [_radioStations addObject:@"http://199.19.105.171:8059"];
         
         [_radioNames addObject:@"Radio Javan"];
         [_radioSubtitles addObject:@"http mp3 stream"];
@@ -74,13 +86,14 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
         [_radioSubtitles addObject:@"http mp3 pls stream"];
         [_radioStations addObject:@"http://www.181.fm/winamp.pls?station=181-chilled&style=mp3&description=Chilled%20Out&file=181-chilled.pls"];
         
-        AudioSessionInitialize(NULL, NULL, InterruptionListenerCallback, self);
+        [[YLAudioSession sharedInstance] addDelegate:self];
     }
     
     return self;
 }
 
 - (void)dealloc {
+    [[YLAudioSession sharedInstance] removeDelegate:self];
     [_radio setDelegate:nil];
     [_radio release];
     
@@ -94,6 +107,7 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     [_radioStations release];
     [_radioNames release];
     [_radioSubtitles release];
+    [_recordings release];
     
     [super dealloc];
 }
@@ -110,13 +124,15 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     }
     
     [_playButton addTarget:self action:@selector(playButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [_recordButton addTarget:self action:@selector(recordButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    _recordButton.enabled = NO;
     [_statusLabel setText:@""];
     [_titleLabel setText:@""];
     
     [_volumeSlider setThumbImage:[UIImage imageNamed:@"knob.png"] forState:UIControlStateNormal];
-	[_volumeSlider setMinimumTrackImage:[[UIImage imageNamed:@"scrub_left.png"] stretchableImageWithLeftCapWidth:10 topCapHeight:0]
+	[_volumeSlider setMinimumTrackImage:[[UIImage imageNamed:@"scrub_left.png"] resizableImageWithCapInsets:UIEdgeInsetsFromString(@"{0.0,6.0,0.0,6.0}")]
                                forState:UIControlStateNormal];
-	[_volumeSlider setMaximumTrackImage:[[UIImage imageNamed:@"scrub_right.png"] stretchableImageWithLeftCapWidth:10 topCapHeight:0]
+	[_volumeSlider setMaximumTrackImage:[[UIImage imageNamed:@"scrub_right.png"] resizableImageWithCapInsets:UIEdgeInsetsFromString(@"{0.0,6.0,0.0,6.0}")]
                                forState:UIControlStateNormal];
 	[_volumeSlider addTarget:self action:@selector(volumeSliderMoved:) forControlEvents:UIControlEventValueChanged];
 }
@@ -170,7 +186,7 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
 
 
 #pragma mark -
-#pragma mark Instance Methods
+#pragma mark YLAudioSessionDelegate
 - (void)beginInterruption {
     if(_radio == nil) {
         return;
@@ -179,13 +195,23 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     [_radio pause];
 }
 
-- (void)endInterruption {
+- (void)endInterruptionWithFlags:(NSUInteger)flags {
     if(_radio == nil) {
         return;
     }
     
     if([_radio isPaused]) {
         [_radio play];
+    }
+}
+
+- (void)headphoneUnplugged {
+    if(_radio == nil) {
+        return;
+    }
+    
+    if([_radio isPlaying]) {
+        [_radio pause];
     }
 }
 
@@ -241,9 +267,9 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     _currentRadio = indexPath.row;
     NSString *radioUrl = [_radioStations objectAtIndex:indexPath.row];
     if([radioUrl hasPrefix:@"mms"]) {
-        _radio = [[MMSRadio alloc] initWithURL:[NSURL URLWithString:radioUrl]];
+        _radio = [[YLMMSRadio alloc] initWithURL:[NSURL URLWithString:radioUrl]];
     } else {
-        _radio = [[HTTPRadio alloc] initWithURL:[NSURL URLWithString:radioUrl]];
+        _radio = [[YLHTTPRadio alloc] initWithURL:[NSURL URLWithString:radioUrl]];
     }
     
     if(_radio) {
@@ -257,6 +283,15 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
 
 #pragma mark -
 #pragma mark Private Methods
+- (void)recordingsTapped {
+    if(_radio && [_radio isPlaying]) {
+        [_radio pause];
+    }
+    
+    RecordingsViewController *r = [[[RecordingsViewController alloc] initWithRecordings:[NSArray arrayWithArray:_recordings]] autorelease];
+    [self.navigationController pushViewController:r animated:YES];
+}
+
 - (void)playButtonTapped {
     if(_radio == nil) {
         return;
@@ -269,6 +304,29 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     }
 }
 
+- (void)recordButtonTapped {
+    if(_radio == nil) {
+        return;
+    }
+    
+    if(![_radio isPlaying]) {
+        return;
+    }
+    
+    if(_radio.isRecording) {
+        [_recordButton setImage:[UIImage imageNamed:@"record_off.png"] forState:UIControlStateNormal];
+        [_radio stopRecording];
+    } else {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsPath = [paths objectAtIndex:0];
+        NSString *filename = [NSString stringWithFormat:@"%@%d.%@", [_radioNames objectAtIndex:_currentRadio], _recordingCounter++, [_radio fileExtensionHint]];
+        NSString *path = [documentsPath stringByAppendingPathComponent:filename];
+        
+        [_recordButton setImage:[UIImage imageNamed:@"record_on.png"] forState:UIControlStateNormal];
+        [_radio startRecordingWithDestination:path];
+    }
+}
+
 - (void)volumeSliderMoved:(id)sender {
     if(_radio) {
         [_radio setVolume:[_volumeSlider value]];
@@ -278,31 +336,36 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
 
 #pragma mark -
 #pragma mark MMSRadioDelegate Methods
-- (void)radioStateChanged:(Radio *)radio {
-    RadioState state = [_radio radioState];
+- (void)radioStateChanged:(YLRadio *)radio {
+    YLRadioState state = [_radio radioState];
     if(state == kRadioStateConnecting) {
         [_statusLabel setText:@"Status: Connecting"];
         [_titleLabel setText:@""];
         [_playButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
         [_playButton setEnabled:NO];
+        [_recordButton setEnabled:NO];
     } else if(state == kRadioStateBuffering) {
         [_statusLabel setText:@"Status: Buffering"];
         [_playButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
         [_playButton setEnabled:YES];
+        [_recordButton setEnabled:NO];
     } else if(state == kRadioStatePlaying) {
         [_statusLabel setText:@"Status: Playing"];
         [_playButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
         [_playButton setEnabled:YES];
+        [_recordButton setEnabled:YES];
     } else if(state == kRadioStateStopped) {
         [_statusLabel setText:@"Status: Stopped"];
         [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
         [_playButton setEnabled:YES];
+        [_recordButton setEnabled:NO];
     } else if(state == kRadioStateError) {
         [_statusLabel setText:@"Status: Error"];
         [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
         [_playButton setEnabled:YES];
+        [_recordButton setEnabled:NO];
         
-        RadioError error = [_radio radioError];
+        YLRadioError error = [_radio radioError];
         if(error == kRadioErrorAudioQueueBufferCreate) {
             [_titleLabel setText:@"Audio buffers could not be created."];
         } else if(error == kRadioErrorAudioQueueCreate) {
@@ -327,25 +390,42 @@ static void InterruptionListenerCallback(void *inUserData, UInt32 interruptionSt
     }
 }
 
-- (void)radioMetadataReady:(Radio *)radio {
+- (void)radio:(YLRadio *)radio didStartRecordingWithDestination:(NSString *)path {
+    NSLog(@"Did start recording with destination: %@", path);
+}
+
+- (void)radio:(YLRadio *)radio didStopRecordingWithDestination:(NSString *)path {
+    NSLog(@"Did stop recording with destination: %@", path);
+    [_recordButton setImage:[UIImage imageNamed:@"record_off.png"] forState:UIControlStateNormal];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    [_recordings addObject:[url lastPathComponent]];
+}
+
+- (void)radio:(YLRadio *)radio recordingFailedWithError:(NSError *)error {
+    // Error codes are defined in YLRadio.h: YLRadioRecordingError
+    NSLog(@"Recording failed with error (code: %d): %@", error.code, error.localizedDescription);
+    [_recordButton setImage:[UIImage imageNamed:@"record_off.png"] forState:UIControlStateNormal];
+}
+
+- (void)radioMetadataReady:(YLRadio *)radio {
     NSString *radioName = [radio radioName];
     NSString *radioGenre = [radio radioGenre];
     NSString *radioUrl = [radio radioUrl];
     
     if(radioName) {
-        DLog(@"Radio name: %@", radioName);
+        NSLog(@"Radio name: %@", radioName);
     }
     
     if(radioGenre) {
-        DLog(@"Radio genre: %@", radioGenre);
+        NSLog(@"Radio genre: %@", radioGenre);
     }
     
     if(radioUrl) {
-        DLog(@"Radio url: %@", radioUrl);
+        NSLog(@"Radio url: %@", radioUrl);
     }
 }
 
-- (void)radioTitleChanged:(Radio *)radio {
+- (void)radioTitleChanged:(YLRadio *)radio {
     [_titleLabel setText:[NSString stringWithFormat:@"Now Playing: %@", [radio radioTitle]]];
     
     if(NSClassFromString(@"MPNowPlayingInfoCenter")) {
