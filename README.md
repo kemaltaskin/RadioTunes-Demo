@@ -25,6 +25,10 @@ Note: The demo project will only play radio streams for a limited time only.
 - Auto reconnect feature.
 - Works on Edge/3G/WiFi.
 
+#Documentation
+All public classes of RadioTunes SDK are fully documented. See the [Technical Documentation](http://yakamozlabs.com/static/radiotunes/index.html) for further information.
+
+
 # Screenshot of Demo App
 
 ![screenshot](http://dl.dropbox.com/u/1413757/RadioTunes/screenshot.png)
