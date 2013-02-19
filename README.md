@@ -9,7 +9,7 @@ Note: The demo project will only play radio streams for a limited time only.
 
 ![banner](http://dl.dropbox.com/u/1413757/RadioTunes/banner.png)
 
-###You can purchase a commercial license with the full source code at [Binpress](http://www.binpress.com/app/radiotunes-sdk-for-ios/596).
+###You can purchase a commercial license with the full source code at [Yakamoz Labs](http://yakamozlabs.com).
 
 # Features
 
