@@ -37,7 +37,6 @@ typedef struct YLPlayerState {
     NSUInteger mBufferInSeconds;
     unsigned long long mTotalBytes;
     float mGain;
-    dispatch_queue_t mLockQueue;
 } YLPlayerState;
 
 typedef enum {
@@ -104,6 +103,7 @@ extern NSString *YLRadioTunesErrorDomain;
     UIBackgroundTaskIdentifier _bgTask;
     NSTimer *_bufferTimer;
     NSTimer *_reconnectTimer;
+    dispatch_queue_t _lockQueue;
     
     YLReachability *_reachability;
     YLRadioConnectionType _connectionType;
@@ -194,6 +194,7 @@ extern NSString *YLRadioTunesErrorDomain;
 /// @param radio The YLRadio object informing the delegate
 - (void)radioStateChanged:(YLRadio *)radio;
 
+@optional
 /// Called when recording has started.
 /// @param radio The YLRadio object informing the delegate.
 /// @param path Filesystem path of the recorded file.
@@ -209,7 +210,6 @@ extern NSString *YLRadioTunesErrorDomain;
 /// @param error NSError object describing the error.
 - (void)radio:(YLRadio *)radio recordingFailedWithError:(NSError *)error;
 
-@optional
 /// Called when the Shoutcast metadata is parsed.
 /// @param radio The YLRadio object informing the delegate.
 - (void)radioMetadataReady:(YLRadio *)radio;
