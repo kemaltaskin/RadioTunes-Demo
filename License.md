@@ -1,30 +1,14 @@
 # Evaluation License
-Copyright © 2012 Yakamoz Labs. All rights reserved.
+The following license applies to the free trial version of the software component.
 
-This agreement sets the terms, rights, restrictions and obligations on evaluating RadioTunes SDK for iOS (hereinafter: The Software) created and owned by Yakamoz Labs (hereinafter: Licensor), as detailed herein.
+Copyright (c) 2010-2013, Yakamoz Labs.
+All rights reserved.
 
-Licensor hereby grants Licensee the right to use The Software under the following conditions:
+Redistribution of this software, in either source or binary form is prohibited.
 
-- The Licensee may use The Software with the purpose to evaluate it before purchasing a commercial license.
-- The distribution of The Software in any form (source or binary) is strictly prohibited.
-- Image assets, static libraries and object code may not be used in apps submitted to the App Store.
+Use of this software is permitted under the following conditions:
 
-To the extent permitted under Law, The Software is provided under an AS-IS basis. Licensor shall never, and without any limit, be liable for any damage, cost, expense or any other payment incurred by Licesee as a result of software’s actions, failure, bugs and/or any other interaction between The Software and Licesee’s end-equipment, computers, other software or any 3rd party, end-equipment, computer or services. Moreover, Licensor shall never be liable for any defect in source code written by Licensee when relying on The Software or using The Software’s source code.
+- The software is used for evaluation purposes, with a view to purchasing a commercial development license.
+- The software is used for non-commercial educational purposes. In all cases, the software's object code may not be submitted to Apple's App Store.
 
-
-# Commercial License
-Copyright © 2012 Yakamoz Labs. All rights reserved.
-
-This agreement sets the terms, rights, restrictions and obligations on using RadioTunes SDK for iOS (hereinafter: The Software) created and owned by Yakamoz Labs (hereinafter: Licensor), as detailed herein.
-
-Licensor hereby grants Licensee the right to use The Software under the following conditions:
-
-- The Licensee may use The Software, unless otherwise negotiated, in one iOS application.
-- The Software must be distributed only in binary form as part of a larger work by the Licensee.
-- If the Licensee purchased the "Developer" license, he may also distribute The Software source code as long as credit to the Licensor is granted and that redistribution is made under the terms of this license.
-- Licensee may create derivative works based on Software, including amending Software's source code, modifying it, integrating it into a larger work or removing portions of Software, as long as no distribution of derivative works is made.
-- If the Licensee purchased the "Developer" license, he may create and distribute derivative works based on Software as long as credit to the Licensor is granted and that redistribution is made under the terms of this license.
-- Licensee may not assign or transfer his rights and duties under this license.
- 
-
-To the extent permitted under Law, The Software is provided under an AS-IS basis. Licensor shall never, and without any limit, be liable for any damage, cost, expense or any other payment incurred by Licesee as a result of software’s actions, failure, bugs and/or any other interaction between The Software and Licesee’s end-equipment, computers, other software or any 3rd party, end-equipment, computer or services. Moreover, Licensor shall never be liable for any defect in source code written by Licensee when relying on The Software or using The Software’s source code.
+This software is provided by Yakamoz Labs "as is" and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall Yakamoz Labs be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of sue, data or profits; or other business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
