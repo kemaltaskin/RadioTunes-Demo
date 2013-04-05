@@ -50,6 +50,7 @@ typedef enum {
 typedef enum {
     kRadioErrorNone = 0,
     kRadioErrorPlaylistParsing,
+    kRadioErrorPlaylistMMSStreamDetected,
     kRadioErrorFileStreamGetProperty,
     kRadioErrorFileStreamOpen,
     kRadioErrorAudioQueueCreate,
@@ -108,6 +109,10 @@ extern NSString *YLRadioTunesErrorDomain;
     YLReachability *_reachability;
     YLRadioConnectionType _connectionType;
 }
+
+/// This url can be different than the one you passed in initWithURL. If a playlist is detected this property
+/// will contain the first url detected by the playlist parser.
+@property (nonatomic, readonly) NSURL *url;
 
 /// Current radio state.
 @property (nonatomic, readonly) YLRadioState radioState;
