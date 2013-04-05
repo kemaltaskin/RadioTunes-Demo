@@ -14,6 +14,7 @@
     NSInteger _recordingCounter;
     
     YLRadio *_radio;
+    BOOL _interruptedDuringPlayback;
     
     NSMutableArray *_radioStations;
     NSMutableArray *_radioNames;
@@ -62,17 +63,17 @@
         [_radioSubtitles addObject:@"mms wma stream"];
         [_radioStations addObject:@"mmsh://84.16.235.90/ShowRadyo"];
         
-        [_radioNames addObject:@"DI.fm"];
-        [_radioSubtitles addObject:@"mms wma stream"];
-        [_radioStations addObject:@"mms://wstream5a.di.fm/vocaltrance"];
+        [_radioNames addObject:@"BBC Radio 1"];
+        [_radioSubtitles addObject:@"http asx mms wma stream"];
+        [_radioStations addObject:@"http://www.bbc.co.uk/radio/listen/live/r1.asx"];
         
         [_radioNames addObject:@"Boost.FM"];
         [_radioSubtitles addObject:@"http mp3 stream"];
         [_radioStations addObject:@"http://108.168.244.242:8000/stream/1/"];
         
-        [_radioNames addObject:@"BeatLounge"];
-        [_radioSubtitles addObject:@"http mp3 stream"];
-        [_radioStations addObject:@"http://199.19.105.171:8059"];
+        [_radioNames addObject:@"Soundtracks"];
+        [_radioSubtitles addObject:@"http pls mp3 stream"];
+        [_radioStations addObject:@"http://yp.shoutcast.com/sbin/tunein-station.pls?id=5266"];
         
         [_radioNames addObject:@"Radio Javan"];
         [_radioSubtitles addObject:@"http mp3 stream"];
@@ -192,7 +193,10 @@
         return;
     }
     
-    [_radio pause];
+    if([_radio isPlaying]) {
+        _interruptedDuringPlayback = YES;
+        [_radio pause];
+    }
 }
 
 - (void)endInterruptionWithFlags:(NSUInteger)flags {
@@ -200,9 +204,11 @@
         return;
     }
     
-    if([_radio isPaused]) {
+    if(_interruptedDuringPlayback && [_radio isPaused]) {
         [_radio play];
     }
+    
+    _interruptedDuringPlayback = NO;
 }
 
 - (void)headphoneUnplugged {
@@ -360,12 +366,29 @@
         [_playButton setEnabled:YES];
         [_recordButton setEnabled:NO];
     } else if(state == kRadioStateError) {
+        YLRadioError error = [_radio radioError];
+        // Special handling for ASX playlist which is parsed by YLHTTPRadio. We need to switch over to
+        // YLMMSRadio if the parsed URL is a valid mms URL.
+        if(error == kRadioErrorPlaylistMMSStreamDetected) {
+            // copy url because it will be gone when we release our _radio instance
+            NSURL *url = [[_radio url] copy];
+            [_radio shutdown];
+            [_radio release];
+            
+            _radio = [[YLMMSRadio alloc] initWithURL:url];
+            [url release];
+            if(_radio) {
+                [_radio setDelegate:self];
+                [_radio play];
+            }
+            
+            return;
+        }
+        
         [_statusLabel setText:@"Status: Error"];
         [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
         [_playButton setEnabled:YES];
         [_recordButton setEnabled:NO];
-        
-        YLRadioError error = [_radio radioError];
         if(error == kRadioErrorAudioQueueBufferCreate) {
             [_titleLabel setText:@"Audio buffers could not be created."];
         } else if(error == kRadioErrorAudioQueueCreate) {

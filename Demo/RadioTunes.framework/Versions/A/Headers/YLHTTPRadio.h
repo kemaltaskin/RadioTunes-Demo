@@ -13,7 +13,8 @@ typedef enum {
     kPlaylistNone = 0,
     kPlaylistM3U,
     kPlaylistPLS,
-    kPlaylistXSPF
+    kPlaylistXSPF,
+    kPlaylistASX
 } YLPlaylistType;
 
 typedef enum {
