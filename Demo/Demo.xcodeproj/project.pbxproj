@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2FA49D1712B6D800B5797C /* RadioTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2FA49C1712B6D800B5797C /* RadioTunes.framework */; };
 		0A46520916A6DAEE0055687E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A46520816A6DAEE0055687E /* AVFoundation.framework */; };
 		0A46520E16A6DB060055687E /* RecordingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46520D16A6DB060055687E /* RecordingsViewController.m */; };
 		0A46521016A6DB130055687E /* RecordingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A46520F16A6DB130055687E /* RecordingsView.xib */; };
@@ -47,7 +48,6 @@
 		0AAC5961155D3F10008D02C2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC5960155D3F10008D02C2 /* MainWindow.xib */; };
 		0AAC5971155D5B13008D02C2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC596F155D5B13008D02C2 /* Icon.png */; };
 		0AAC5972155D5B13008D02C2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC5970155D5B13008D02C2 /* Icon@2x.png */; };
-		0AD4EDF6170EC1BE005A92FF /* RadioTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD4EDF5170EC1BE005A92FF /* RadioTunes.framework */; };
 		0AEAC3CA16109B1A00AEAB20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */; };
 		0AEAC3CB16109B1A00AEAB20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C816109B1A00AEAB20 /* Default.png */; };
 		0AEAC3CC16109B1A00AEAB20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C916109B1A00AEAB20 /* Default@2x.png */; };
@@ -56,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2FA49C1712B6D800B5797C /* RadioTunes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RadioTunes.framework; sourceTree = "<group>"; };
 		0A46520816A6DAEE0055687E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0A46520C16A6DB060055687E /* RecordingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsViewController.h; sourceTree = "<group>"; };
 		0A46520D16A6DB060055687E /* RecordingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingsViewController.m; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		0AAC5960155D3F10008D02C2 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		0AAC596F155D5B13008D02C2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		0AAC5970155D5B13008D02C2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		0AD4EDF5170EC1BE005A92FF /* RadioTunes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RadioTunes.framework; sourceTree = "<group>"; };
 		0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0AEAC3C816109B1A00AEAB20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0AEAC3C916109B1A00AEAB20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 				0AAC58C9155D3A65008D02C2 /* UIKit.framework in Frameworks */,
 				0AAC58CB155D3A65008D02C2 /* Foundation.framework in Frameworks */,
 				0AAC58CD155D3A65008D02C2 /* CoreGraphics.framework in Frameworks */,
-				0AD4EDF6170EC1BE005A92FF /* RadioTunes.framework in Frameworks */,
+				0A2FA49D1712B6D800B5797C /* RadioTunes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +161,7 @@
 		0AAC58C7155D3A65008D02C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0AD4EDF5170EC1BE005A92FF /* RadioTunes.framework */,
+				0A2FA49C1712B6D800B5797C /* RadioTunes.framework */,
 				0A46520816A6DAEE0055687E /* AVFoundation.framework */,
 				0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */,
 				0AAC593B155D3B87008D02C2 /* libz.dylib */,
