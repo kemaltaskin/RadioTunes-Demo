@@ -1,15 +1,15 @@
 //
 //  MainViewController.m
-//  Radio
 //
 //  Copyright 2011 Yakamoz Labs. All rights reserved.
 //
 
 #import "MainViewController.h"
 #import "RecordingsViewController.h"
+#import "LicenseViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface MainViewController() {
+@interface MainViewController()<UIAlertViewDelegate> {
     NSInteger _currentRadio;
     NSInteger _recordingCounter;
     
@@ -136,6 +136,14 @@
 	[_volumeSlider setMaximumTrackImage:[[UIImage imageNamed:@"scrub_right.png"] resizableImageWithCapInsets:UIEdgeInsetsFromString(@"{0.0,6.0,0.0,6.0}")]
                                forState:UIControlStateNormal];
 	[_volumeSlider addTarget:self action:@selector(volumeSliderMoved:) forControlEvents:UIControlEventValueChanged];
+    
+    NSString *message = @"The demo version of RadioTunes SDK has a time limit of 20 seconds!";
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"RadioTunes SDK"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                           otherButtonTitles:@"License", nil] autorelease];
+    [alert show];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -183,6 +191,16 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+#pragma mark -
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == [alertView firstOtherButtonIndex]) {
+        LicenseViewController *l = [[[LicenseViewController alloc] init] autorelease];
+        [self.navigationController pushViewController:l animated:YES];
+    }
 }
 
 
