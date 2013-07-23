@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1CE11C179E985500AA33D6 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1CE11B179E985500AA33D6 /* libiconv.dylib */; };
 		0A46520916A6DAEE0055687E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A46520816A6DAEE0055687E /* AVFoundation.framework */; };
 		0A46520E16A6DB060055687E /* RecordingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46520D16A6DB060055687E /* RecordingsViewController.m */; };
 		0A46521016A6DB130055687E /* RecordingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A46520F16A6DB130055687E /* RecordingsView.xib */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1CE11B179E985500AA33D6 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		0A46520816A6DAEE0055687E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0A46520C16A6DB060055687E /* RecordingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsViewController.h; sourceTree = "<group>"; };
 		0A46520D16A6DB060055687E /* RecordingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingsViewController.m; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A1CE11C179E985500AA33D6 /* libiconv.dylib in Frameworks */,
 				0A46522A16A6DD3B0055687E /* libz.dylib in Frameworks */,
 				0A46522716A6DD290055687E /* libxml2.dylib in Frameworks */,
 				0A46520916A6DAEE0055687E /* AVFoundation.framework in Frameworks */,
@@ -166,6 +169,7 @@
 				0A5B4B341725271800F43382 /* RadioTunes.framework */,
 				0A46520816A6DAEE0055687E /* AVFoundation.framework */,
 				0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */,
+				0A1CE11B179E985500AA33D6 /* libiconv.dylib */,
 				0AAC593B155D3B87008D02C2 /* libz.dylib */,
 				0AAC5939155D3B81008D02C2 /* libxml2.dylib */,
 				0AAC5937155D3B6E008D02C2 /* SystemConfiguration.framework */,
@@ -419,7 +423,7 @@
 		0AAC58DD155D3A65008D02C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -429,14 +433,14 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LD_NO_PIE = YES;
+				LD_NO_PIE = NO;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -444,7 +448,7 @@
 		0AAC58DE155D3A65008D02C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -454,14 +458,14 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LD_NO_PIE = YES;
+				LD_NO_PIE = NO;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
