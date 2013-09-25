@@ -60,6 +60,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+#endif
+    
     if([[UIScreen mainScreen] scale] >= 2.0 && [[UIScreen mainScreen] bounds].size.height > 480) {
         [_bgImageView setImage:[UIImage imageNamed:@"bg-i5.png"]];
     }

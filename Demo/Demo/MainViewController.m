@@ -59,9 +59,9 @@
         _radioSubtitles = [[NSMutableArray alloc] init];
         _recordings = [[NSMutableArray alloc] init];
         
-        [_radioNames addObject:@"Show Radyo"];
+        [_radioNames addObject:@"TRT Radyo 1"];
         [_radioSubtitles addObject:@"mms wma stream"];
-        [_radioStations addObject:@"mmsh://84.16.235.90/ShowRadyo"];
+        [_radioStations addObject:@"mmsh://95.0.159.133/RADYO1"];
         
         [_radioNames addObject:@"BBC Radio 1"];
         [_radioSubtitles addObject:@"http asx mms wma stream"];
@@ -120,6 +120,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+#endif
+    
     if([[UIScreen mainScreen] scale] >= 2.0 && [[UIScreen mainScreen] bounds].size.height > 480) {
         [_bgImageView setImage:[UIImage imageNamed:@"bg-i5.png"]];
     }
@@ -163,18 +169,30 @@
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
-    switch(event.subtype) {
-        case UIEventSubtypeRemoteControlTogglePlayPause:
-            if(_radio) {
-                if([_radio isPlaying]) {
+    if(event.type == UIEventTypeRemoteControl) {
+        switch(event.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                if(_radio) {
+                    if([_radio isPlaying]) {
+                        [_radio pause];
+                    } else {
+                        [_radio play];
+                    }
+                }
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                if(_radio && [_radio isPlaying]) {
                     [_radio pause];
-                } else {
+                }
+                break;
+            case UIEventSubtypeRemoteControlPlay:
+                if(_radio && [_radio isPaused]) {
                     [_radio play];
                 }
-            }
-            break;
-        default:
-            break;
+                break;
+            default:
+                break;
+        }
     }
 }
 
