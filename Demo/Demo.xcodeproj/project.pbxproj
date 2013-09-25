@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A1CE11E179E991000AA33D6 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1CE11D179E991000AA33D6 /* libiconv.dylib */; };
+		0A3F31E717F317BE00A0FAA1 /* iPhoneRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3F31E617F317BE00A0FAA1 /* iPhoneRetina.png */; };
 		0A46520916A6DAEE0055687E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A46520816A6DAEE0055687E /* AVFoundation.framework */; };
 		0A46520E16A6DB060055687E /* RecordingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46520D16A6DB060055687E /* RecordingsViewController.m */; };
 		0A46521016A6DB130055687E /* RecordingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A46520F16A6DB130055687E /* RecordingsView.xib */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		0A1CE11D179E991000AA33D6 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		0A3F31E617F317BE00A0FAA1 /* iPhoneRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneRetina.png; sourceTree = "<group>"; };
 		0A46520816A6DAEE0055687E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0A46520C16A6DB060055687E /* RecordingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsViewController.h; sourceTree = "<group>"; };
 		0A46520D16A6DB060055687E /* RecordingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingsViewController.m; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		0AAC596E155D5B13008D02C2 /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				0A3F31E617F317BE00A0FAA1 /* iPhoneRetina.png */,
 				0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */,
 				0AEAC3C816109B1A00AEAB20 /* Default.png */,
 				0AEAC3C916109B1A00AEAB20 /* Default@2x.png */,
@@ -324,6 +327,7 @@
 				0AAC595F155D3E61008D02C2 /* volume@2x.png in Resources */,
 				0AAC5971155D5B13008D02C2 /* Icon.png in Resources */,
 				0AAC5972155D5B13008D02C2 /* Icon@2x.png in Resources */,
+				0A3F31E717F317BE00A0FAA1 /* iPhoneRetina.png in Resources */,
 				0AEAC3CA16109B1A00AEAB20 /* Default-568h@2x.png in Resources */,
 				0AEAC3CB16109B1A00AEAB20 /* Default.png in Resources */,
 				0AEAC3CC16109B1A00AEAB20 /* Default@2x.png in Resources */,

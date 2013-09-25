@@ -16,8 +16,10 @@
     _mainViewController = [[MainViewController alloc] init];
     _navController = [[UINavigationController alloc] initWithRootViewController:_mainViewController];
     
-    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithWhite:0.1 alpha:1.0]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
+    if([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+        [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithWhite:0.1 alpha:1.0]];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
+    }
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     [self.window setRootViewController:_navController];
