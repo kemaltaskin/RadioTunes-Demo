@@ -59,9 +59,9 @@
         _radioSubtitles = [[NSMutableArray alloc] init];
         _recordings = [[NSMutableArray alloc] init];
         
-        [_radioNames addObject:@"TRT Radyo 1"];
+        [_radioNames addObject:@"CNN TV"];
         [_radioSubtitles addObject:@"mms wma stream"];
-        [_radioStations addObject:@"mmsh://95.0.159.133/RADYO1"];
+        [_radioStations addObject:@"mmsh://a466.l3760630465.c37606.g.lm.akamaistream.net/D/466/37606/v0001/reflector:30465"];
         
         [_radioNames addObject:@"BBC Radio 1"];
         [_radioSubtitles addObject:@"http asx mms wma stream"];
@@ -260,11 +260,11 @@
 
 #pragma mark -
 #pragma mark UITableViewDataSource/UITableViewDelegate Methods
-- (int)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_radioStations count];
 }
 
@@ -276,7 +276,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    int row = indexPath.row;
+    NSInteger row = indexPath.row;
     
     [[cell textLabel] setText:[_radioNames objectAtIndex:row]];
     [[cell detailTextLabel] setText:[_radioSubtitles objectAtIndex:row]];
@@ -361,7 +361,7 @@
     } else {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsPath = [paths objectAtIndex:0];
-        NSString *filename = [NSString stringWithFormat:@"%@%d.%@", [_radioNames objectAtIndex:_currentRadio], _recordingCounter++, [_radio fileExtensionHint]];
+        NSString *filename = [NSString stringWithFormat:@"%@%ld.%@", [_radioNames objectAtIndex:_currentRadio], (long)_recordingCounter++, [_radio fileExtensionHint]];
         NSString *path = [documentsPath stringByAppendingPathComponent:filename];
         
         [_recordButton setImage:[UIImage imageNamed:@"record_on.png"] forState:UIControlStateNormal];
@@ -462,7 +462,7 @@
 
 - (void)radio:(YLRadio *)radio recordingFailedWithError:(NSError *)error {
     // Error codes are defined in YLRadio.h: YLRadioRecordingError
-    NSLog(@"Recording failed with error (code: %d): %@", error.code, error.localizedDescription);
+    NSLog(@"Recording failed with error (code: %ld): %@", (long)error.code, error.localizedDescription);
     [_recordButton setImage:[UIImage imageNamed:@"record_off.png"] forState:UIControlStateNormal];
 }
 
