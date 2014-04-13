@@ -90,11 +90,11 @@
 
 #pragma mark -
 #pragma mark UITableViewDataSource/UITableViewDelegate Methods
-- (int)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_recordings count];
 }
 
@@ -106,7 +106,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    int row = indexPath.row;
+    NSInteger row = indexPath.row;
     
     [[cell textLabel] setText:[_recordings objectAtIndex:row]];
     if(row == _currentRecording) {

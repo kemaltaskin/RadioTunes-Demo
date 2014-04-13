@@ -37,12 +37,12 @@
 /// Copies a number of bytes into a given buffer.
 /// @param buffer A buffer into which to copy data.
 /// @param size The number of bytes to copy to buffer.
-- (void)copyToBuffer:(void *const)buffer size:(int)size;
+- (void)copyToBuffer:(void *const)buffer size:(NSInteger)size;
 
 /// Copies a number of bytes into two given buffers.
 /// @param firstBuffer A buffer into which to copy data.
 /// @param secondBuffer A buffer into which to copy data.
 /// @param size The number of bytes to copy to buffer.
-- (void)copyToBuffer:(void *const)firstBuffer buffer:(void *const)secondBuffer size:(int)size;
+- (void)copyToBuffer:(void *const)firstBuffer buffer:(void *const)secondBuffer size:(NSInteger)size;
 
 @end
