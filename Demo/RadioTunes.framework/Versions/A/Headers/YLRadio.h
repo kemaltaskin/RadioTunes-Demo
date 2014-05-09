@@ -59,7 +59,8 @@ typedef enum {
     kRadioErrorAudioQueueStart,
     kRadioErrorDecoding,
     kRadioErrorHostNotReachable,
-    kRadioErrorNetworkError
+    kRadioErrorNetworkError,
+    kRadioErrorUnsupportedStreamFormat
 } YLRadioError;
 
 typedef enum {
@@ -74,6 +75,12 @@ typedef enum {
     kRadioRecordingFormatError,
     kRadioRecordingWriteError
 } YLRadioRecordingError;
+
+typedef enum {
+    kRadioMeteringInitializationError = 0,
+    kRadioMeteringStateError,
+    kRadioMeteringQueryError
+} YLRadioMeteringError;
 
 extern NSString *YLRadioTunesErrorDomain;
 
@@ -188,6 +195,19 @@ extern NSString *YLRadioTunesErrorDomain;
 /// Sets the volume. Default value is 0.5.
 /// @param volume A value between 0.0 and 1.0.
 - (void)setVolume:(float)volume;
+
+
+/** @name Level Metering Methods */
+/// This method should be called when the radio object is in the kRadioStatePlaying state.
+/// @returns Number of channels. When there's an error the returned value will be -1.
+/// @param error NSError object describing the error if any.
+- (NSInteger)enableLevelMetering:(NSError **)error;
+
+/// Returns the current level meter values in decibels.
+/// @param levels Array of AudioQueueLevelMeterState structures, 1 per channel. Use the value returned
+/// by the enableLevelMetering method to allocate an array with the right size.
+/// @param error NSError object describing the error if any.
+- (void)currentLevelMeterDB:(AudioQueueLevelMeterState *)levels error:(NSError **)error;
 
 @end
 

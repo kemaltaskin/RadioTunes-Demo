@@ -13,8 +13,11 @@
     NSInteger _currentRadio;
     NSInteger _recordingCounter;
     
+    NSString *_documentsPath;
+    
     YLRadio *_radio;
     BOOL _interruptedDuringPlayback;
+    AudioQueueLevelMeterState *_levels;
     
     NSMutableArray *_radioStations;
     NSMutableArray *_radioNames;
@@ -53,11 +56,27 @@
         _radio = nil;
         _currentRadio = -1;
         _recordingCounter = 1;
+        _levels = NULL;
         
         _radioStations = [[NSMutableArray alloc] init];
         _radioNames = [[NSMutableArray alloc] init];
         _radioSubtitles = [[NSMutableArray alloc] init];
-        _recordings = [[NSMutableArray alloc] init];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        _documentsPath = [[paths objectAtIndex:0] retain];
+        NSString *recPlist = [_documentsPath stringByAppendingPathComponent:@"recordings.plist"];
+        if([[NSFileManager defaultManager] fileExistsAtPath:recPlist]) {
+            id recordings = [NSKeyedUnarchiver unarchiveObjectWithFile:recPlist];
+            if(recordings) {
+                _recordings = [[NSMutableArray arrayWithArray:(NSArray *)recordings] retain];
+            }
+        }
+        
+        if(_recordings == nil) {
+            _recordings = [[NSMutableArray alloc] init];
+        }
+        
+        _recordingCounter = [_recordings count] + 1;
         
         [_radioNames addObject:@"CNN TV"];
         [_radioSubtitles addObject:@"mms wma stream"];
@@ -109,6 +128,12 @@
     [_radioNames release];
     [_radioSubtitles release];
     [_recordings release];
+    [_documentsPath release];
+    
+    if(_levels != NULL) {
+        free(_levels);
+        _levels = NULL;
+    }
     
     [super dealloc];
 }
@@ -143,7 +168,7 @@
                                forState:UIControlStateNormal];
 	[_volumeSlider addTarget:self action:@selector(volumeSliderMoved:) forControlEvents:UIControlEventValueChanged];
     
-    NSString *message = @"The demo version of RadioTunes SDK has a time limit of 20 seconds!";
+    NSString *message = @"The demo version of RadioTunes SDK has a time limit of 2 minutes!";
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"RadioTunes SDK"
                                                     message:message
                                                    delegate:self
@@ -396,6 +421,33 @@
         [_playButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
         [_playButton setEnabled:YES];
         [_recordButton setEnabled:YES];
+        
+        /* Example code showing how you can query the current level meter in DB. */
+        /* BEGIN LEVEL METERING CODE */
+        /******************************
+        NSError *error = nil;
+        NSInteger numberOfChannels = [_radio enableLevelMetering:&error];
+        if(error != nil) {
+            NSLog(@"Metering error: %@", error.description);
+        } else {
+            NSLog(@"Metering number of channels: %ld", (long)numberOfChannels);
+            if(_levels != NULL) {
+                free(_levels);
+                _levels = NULL;
+            }
+            
+            _levels = (AudioQueueLevelMeterState *)malloc(sizeof(AudioQueueLevelMeterState) * numberOfChannels);
+            
+            // Put the following code in another function that keeps called at a certain rate with a timer.
+            [_radio currentLevelMeterDB:_levels error:&error];
+            if(error == nil) {
+                for(NSInteger i = 0; i < numberOfChannels; i++) {
+                    NSLog(@"CHAN: %ld - LEVELS: %f %f", (long)i, _levels[i].mAveragePower, _levels[i].mPeakPower);
+                }
+            }
+        }
+        ****************************/
+        /* END LEVEL METERING CODE */
     } else if(state == kRadioStateStopped) {
         [_statusLabel setText:@"Status: Stopped"];
         [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
@@ -445,6 +497,8 @@
             [_titleLabel setText:@"Radio host not reachable."];
         } else if(error == kRadioErrorNetworkError) {
             [_titleLabel setText:@"Network connection error."];
+        } else if(error == kRadioErrorUnsupportedStreamFormat) {
+            [_titleLabel setText:@"Unsupported stream format."];
         }
     }
 }
@@ -458,6 +512,8 @@
     [_recordButton setImage:[UIImage imageNamed:@"record_off.png"] forState:UIControlStateNormal];
     NSURL *url = [NSURL fileURLWithPath:path];
     [_recordings addObject:[url lastPathComponent]];
+    NSString *recPlist = [_documentsPath stringByAppendingPathComponent:@"recordings.plist"];
+    [NSKeyedArchiver archiveRootObject:_recordings toFile:recPlist];
 }
 
 - (void)radio:(YLRadio *)radio recordingFailedWithError:(NSError *)error {
