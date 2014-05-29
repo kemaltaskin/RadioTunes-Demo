@@ -99,8 +99,8 @@
         [_radioStations addObject:@"http://stream.radiojavan.com/radiojavan"];
         
         [_radioNames addObject:@"Power FM"];
-        [_radioSubtitles addObject:@"http aac+ pls stream"];
-        [_radioStations addObject:@"http://46.20.4.43:8130/listen.pls"];
+        [_radioSubtitles addObject:@"http aac+ stream"];
+        [_radioStations addObject:@"http://sc.powergroup.com.tr:80/PowerFM/aac/128/tunein"];
         
         [_radioNames addObject:@"181.FM Chilled"];
         [_radioSubtitles addObject:@"http mp3 pls stream"];
