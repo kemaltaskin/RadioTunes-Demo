@@ -9,19 +9,6 @@
 #import "YLRadio.h"
 #import "YLPlaylistParserProtocol.h"
 
-typedef enum {
-    kPlaylistNone = 0,
-    kPlaylistM3U,
-    kPlaylistPLS,
-    kPlaylistXSPF,
-    kPlaylistASX
-} YLPlaylistType;
-
-typedef enum {
-    kHTTPStatePlaylistParsing = 0,
-    kHTTPStateAudioStreaming
-} YLHTTPState;
-
 /// Radio class for streaming http radio stations. Use this class if the radio url starts with http or https.
 @interface YLHTTPRadio : YLRadio
 
@@ -30,5 +17,9 @@ typedef enum {
 
 /// Change the http timeout value if needed. Default value is 30 seconds.
 @property (nonatomic, assign) NSUInteger httpTimeout;
+
+/// Default value is YES. Set this value to NO if you want the playlist to be fetched and parsed before
+/// each playback.
+@property (nonatomic, assign) BOOL useCachedPlaylist;
 
 @end

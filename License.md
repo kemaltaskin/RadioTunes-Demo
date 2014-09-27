@@ -1,7 +1,7 @@
 # Evaluation License
 The following license applies to the free trial version of the software component.
 
-Copyright (c) 2010-2013, Yakamoz Labs.
+Copyright (c) 2010-2014, Yakamoz Labs.
 All rights reserved.
 
 Redistribution of this software, in either source or binary form is prohibited.
