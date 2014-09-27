@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A1CE11E179E991000AA33D6 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1CE11D179E991000AA33D6 /* libiconv.dylib */; };
-		0A3F31E717F317BE00A0FAA1 /* iPhoneRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3F31E617F317BE00A0FAA1 /* iPhoneRetina.png */; };
 		0A46520916A6DAEE0055687E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A46520816A6DAEE0055687E /* AVFoundation.framework */; };
 		0A46520E16A6DB060055687E /* RecordingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46520D16A6DB060055687E /* RecordingsViewController.m */; };
 		0A46521016A6DB130055687E /* RecordingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A46520F16A6DB130055687E /* RecordingsView.xib */; };
@@ -22,6 +21,7 @@
 		0A46522A16A6DD3B0055687E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC593B155D3B87008D02C2 /* libz.dylib */; };
 		0A5B4B3F17252EB500F43382 /* License.md in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B4B3E17252EB500F43382 /* License.md */; };
 		0A5B4B4217252ECA00F43382 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B4B4117252ECA00F43382 /* LicenseViewController.m */; };
+		0A64D5EE19D6CD3000B3231D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A64D5ED19D6CD3000B3231D /* Images.xcassets */; };
 		0AAC58C9155D3A65008D02C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58C8155D3A65008D02C2 /* UIKit.framework */; };
 		0AAC58CB155D3A65008D02C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58CA155D3A65008D02C2 /* Foundation.framework */; };
 		0AAC58CD155D3A65008D02C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58CC155D3A65008D02C2 /* CoreGraphics.framework */; };
@@ -48,19 +48,13 @@
 		0AAC595D155D3E61008D02C2 /* scrub_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC594D155D3E61008D02C2 /* scrub_right@2x.png */; };
 		0AAC595E155D3E61008D02C2 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC594E155D3E61008D02C2 /* volume.png */; };
 		0AAC595F155D3E61008D02C2 /* volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC594F155D3E61008D02C2 /* volume@2x.png */; };
-		0AAC5971155D5B13008D02C2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC596F155D5B13008D02C2 /* Icon.png */; };
-		0AAC5972155D5B13008D02C2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC5970155D5B13008D02C2 /* Icon@2x.png */; };
 		0AD4EDF8170EC355005A92FF /* RadioTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD4EDF7170EC355005A92FF /* RadioTunes.framework */; };
-		0AEAC3CA16109B1A00AEAB20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */; };
-		0AEAC3CB16109B1A00AEAB20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C816109B1A00AEAB20 /* Default.png */; };
-		0AEAC3CC16109B1A00AEAB20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3C916109B1A00AEAB20 /* Default@2x.png */; };
 		0AEAC3CF16109B2200AEAB20 /* bg-i5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC3CE16109B2200AEAB20 /* bg-i5.png */; };
 		0AEAC3D116109B8700AEAB20 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A1CE11D179E991000AA33D6 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
-		0A3F31E617F317BE00A0FAA1 /* iPhoneRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneRetina.png; sourceTree = "<group>"; };
 		0A46520816A6DAEE0055687E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0A46520C16A6DB060055687E /* RecordingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsViewController.h; sourceTree = "<group>"; };
 		0A46520D16A6DB060055687E /* RecordingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingsViewController.m; sourceTree = "<group>"; };
@@ -74,6 +68,7 @@
 		0A5B4B3E17252EB500F43382 /* License.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.md; path = ../../License.md; sourceTree = "<group>"; };
 		0A5B4B4017252ECA00F43382 /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
 		0A5B4B4117252ECA00F43382 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
+		0A64D5ED19D6CD3000B3231D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AAC58C4155D3A65008D02C2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAC58C8155D3A65008D02C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0AAC58CA155D3A65008D02C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -107,12 +102,7 @@
 		0AAC594D155D3E61008D02C2 /* scrub_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scrub_right@2x.png"; sourceTree = "<group>"; };
 		0AAC594E155D3E61008D02C2 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
 		0AAC594F155D3E61008D02C2 /* volume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volume@2x.png"; sourceTree = "<group>"; };
-		0AAC596F155D5B13008D02C2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		0AAC5970155D5B13008D02C2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		0AD4EDF7170EC355005A92FF /* RadioTunes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RadioTunes.framework; sourceTree = "<group>"; };
-		0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		0AEAC3C816109B1A00AEAB20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		0AEAC3C916109B1A00AEAB20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0AEAC3CE16109B2200AEAB20 /* bg-i5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-i5.png"; sourceTree = "<group>"; };
 		0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -194,6 +184,7 @@
 				0AAC58E0155D3AD3008D02C2 /* MainViewController.m */,
 				0AAC58D7155D3A65008D02C2 /* AppDelegate.h */,
 				0AAC58D8155D3A65008D02C2 /* AppDelegate.m */,
+				0A64D5ED19D6CD3000B3231D /* Images.xcassets */,
 				0AAC58CF155D3A65008D02C2 /* Supporting Files */,
 			);
 			path = Demo;
@@ -204,7 +195,6 @@
 			children = (
 				0A5B4B3E17252EB500F43382 /* License.md */,
 				0A46521116A6DB160055687E /* XIB */,
-				0AAC596E155D5B13008D02C2 /* AppImages */,
 				0AAC593F155D3E61008D02C2 /* Images */,
 				0AAC58D0155D3A65008D02C2 /* Demo-Info.plist */,
 				0AAC58D1155D3A65008D02C2 /* InfoPlist.strings */,
@@ -242,19 +232,6 @@
 				0AAC594F155D3E61008D02C2 /* volume@2x.png */,
 			);
 			path = Images;
-			sourceTree = SOURCE_ROOT;
-		};
-		0AAC596E155D5B13008D02C2 /* AppImages */ = {
-			isa = PBXGroup;
-			children = (
-				0A3F31E617F317BE00A0FAA1 /* iPhoneRetina.png */,
-				0AEAC3C716109B1A00AEAB20 /* Default-568h@2x.png */,
-				0AEAC3C816109B1A00AEAB20 /* Default.png */,
-				0AEAC3C916109B1A00AEAB20 /* Default@2x.png */,
-				0AAC596F155D5B13008D02C2 /* Icon.png */,
-				0AAC5970155D5B13008D02C2 /* Icon@2x.png */,
-			);
-			path = AppImages;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -318,6 +295,7 @@
 				0AAC5956155D3E61008D02C2 /* pause.png in Resources */,
 				0AAC5957155D3E61008D02C2 /* pause@2x.png in Resources */,
 				0AAC5958155D3E61008D02C2 /* play.png in Resources */,
+				0A64D5EE19D6CD3000B3231D /* Images.xcassets in Resources */,
 				0AAC5959155D3E61008D02C2 /* play@2x.png in Resources */,
 				0AAC595A155D3E61008D02C2 /* scrub_left.png in Resources */,
 				0AAC595B155D3E61008D02C2 /* scrub_left@2x.png in Resources */,
@@ -325,12 +303,6 @@
 				0AAC595D155D3E61008D02C2 /* scrub_right@2x.png in Resources */,
 				0AAC595E155D3E61008D02C2 /* volume.png in Resources */,
 				0AAC595F155D3E61008D02C2 /* volume@2x.png in Resources */,
-				0AAC5971155D5B13008D02C2 /* Icon.png in Resources */,
-				0AAC5972155D5B13008D02C2 /* Icon@2x.png in Resources */,
-				0A3F31E717F317BE00A0FAA1 /* iPhoneRetina.png in Resources */,
-				0AEAC3CA16109B1A00AEAB20 /* Default-568h@2x.png in Resources */,
-				0AEAC3CB16109B1A00AEAB20 /* Default.png in Resources */,
-				0AEAC3CC16109B1A00AEAB20 /* Default@2x.png in Resources */,
 				0AEAC3CF16109B2200AEAB20 /* bg-i5.png in Resources */,
 				0A46521016A6DB130055687E /* RecordingsView.xib in Resources */,
 				0A46521D16A6DC010055687E /* bar.png in Resources */,
@@ -419,6 +391,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -427,7 +401,7 @@
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = NO;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -444,6 +418,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -452,7 +428,7 @@
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = NO;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (

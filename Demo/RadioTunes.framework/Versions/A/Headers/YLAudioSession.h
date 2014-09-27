@@ -70,8 +70,7 @@ typedef enum {
 - (void)resetBandwidthForConnectionType:(YLNetworkConnectionType)type;
 
 
-// These functions are internal and are only used by YLHTTPRadio and YLMMSRadio!
-- (void)reportHeadphoneUnplugged;
+// This function are internal and are only used by YLHTTPRadio and YLMMSRadio!
 - (void)reportBytes:(NSUInteger)length forConnectionType:(YLNetworkConnectionType)type;
 
 @end
