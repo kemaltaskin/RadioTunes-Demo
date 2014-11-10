@@ -7,61 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <AudioToolbox/AudioToolbox.h>
-#import "YLAudioQueue.h"
-
-#define NUM_AQ_BUFS             3       // Number of audio queue buffers.
-#define AQ_MAX_PACKET_DESCS     256     // Maximum number of audio packet descriptions.
-#define AQ_DEFAULT_BUF_SIZE     4096    // Default audio queue buffer size.
-
-typedef struct YLQueueBuffer {
-    AudioQueueBufferRef mQueueBuffer;
-    AudioStreamPacketDescription *mPacketDescriptions;
-    UInt32 mPacketDescriptionCount;
-} YLQueueBuffer;
-
-typedef YLQueueBuffer *YLQueueBufferRef;
-
-typedef struct YLPlayerState {
-    AudioFileStreamID mStreamID;
-    AudioStreamBasicDescription mAudioFormat;
-    AudioQueueRef mQueue;
-    YLQueueBufferRef mQueueBuffers[NUM_AQ_BUFS];
-    __unsafe_unretained YLAudioQueue *mAudioQueue;
-    BOOL mStarted;
-    BOOL mPlaying;
-    BOOL mPaused;
-    BOOL mBuffering;
-    BOOL mRecording;
-    int mBufferSize;
-    NSUInteger mBufferInSeconds;
-    unsigned long long mTotalBytes;
-    float mGain;
-} YLPlayerState;
-
-typedef enum {
-    kRadioStateStopped = 0,
-    kRadioStateConnecting,
-    kRadioStateBuffering,
-    kRadioStatePlaying,
-    kRadioStateError
-} YLRadioState;
-
-typedef enum {
-    kRadioErrorNone = 0,
-    kRadioErrorPlaylistParsing,
-    kRadioErrorPlaylistMMSStreamDetected,
-    kRadioErrorFileStreamGetProperty,
-    kRadioErrorFileStreamOpen,
-    kRadioErrorAudioQueueCreate,
-    kRadioErrorAudioQueueBufferCreate,
-    kRadioErrorAudioQueueEnqueue,
-    kRadioErrorAudioQueueStart,
-    kRadioErrorDecoding,
-    kRadioErrorHostNotReachable,
-    kRadioErrorNetworkError,
-    kRadioErrorUnsupportedStreamFormat
-} YLRadioError;
+#import "YLRadioBase.h"
 
 typedef enum {
     kRadioConnectionTypeNone = 0,
@@ -87,8 +33,9 @@ extern NSString *YLRadioTunesErrorDomain;
 @protocol YLRadioDelegate;
 @class YLReachability;
 
+
 /// Base class extended by YLHTTPRadio and YLMMSRadio.
-@interface YLRadio : NSObject {
+@interface YLRadio : YLRadioBase {
     NSURL *_url;
     NSString *_filePath;
     
@@ -96,10 +43,6 @@ extern NSString *YLRadioTunesErrorDomain;
     NSString *_radioName;
     NSString *_radioGenre;
     NSString *_radioUrl;
-    
-    YLPlayerState _playerState;
-    YLRadioState _radioState;
-    YLRadioError _radioError;
     
     NSObject<YLRadioDelegate> *_delegate;
     
@@ -120,12 +63,6 @@ extern NSString *YLRadioTunesErrorDomain;
 /// This url can be different than the one you passed in initWithURL. If a playlist is detected this property
 /// will contain the first url detected by the playlist parser.
 @property (nonatomic, readonly) NSURL *url;
-
-/// Current radio state.
-@property (nonatomic, readonly) YLRadioState radioState;
-
-/// Current radio error type.
-@property (nonatomic, readonly) YLRadioError radioError;
 
 /// Title of currently playing song (if provided by Shoutcast metadata).
 @property (nonatomic, retain, readonly) NSString *radioTitle;
@@ -149,10 +86,11 @@ extern NSString *YLRadioTunesErrorDomain;
 /// @param url Url of the radio station.
 - (id)initWithURL:(NSURL *)url;
 
-/** @name Playback Methods */
 /// This function should be called before you release a radio object.
 - (void)shutdown;
 
+
+/** @name Playback Methods */
 /// Start playback.
 - (void)play;
 

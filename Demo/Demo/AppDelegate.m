@@ -12,6 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[YLAudioSession sharedInstance] startAudioSession];
+    [[YLRadioTunes sharedInstance] setLicenseKey:@"your-license-key"];
     
     _mainViewController = [[MainViewController alloc] init];
     _navController = [[UINavigationController alloc] initWithRootViewController:_mainViewController];
