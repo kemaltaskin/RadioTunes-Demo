@@ -22,6 +22,10 @@
 		0A5B4B3F17252EB500F43382 /* License.md in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B4B3E17252EB500F43382 /* License.md */; };
 		0A5B4B4217252ECA00F43382 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B4B4117252ECA00F43382 /* LicenseViewController.m */; };
 		0A64D5EE19D6CD3000B3231D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A64D5ED19D6CD3000B3231D /* Images.xcassets */; };
+		0A7B45D71A10C3E700661C44 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7B45D31A10C3E700661C44 /* libavcodec.a */; };
+		0A7B45D81A10C3E700661C44 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7B45D41A10C3E700661C44 /* libavformat.a */; };
+		0A7B45D91A10C3E700661C44 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7B45D51A10C3E700661C44 /* libavutil.a */; };
+		0A7B45DA1A10C3E700661C44 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7B45D61A10C3E700661C44 /* libswresample.a */; };
 		0AAC58C9155D3A65008D02C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58C8155D3A65008D02C2 /* UIKit.framework */; };
 		0AAC58CB155D3A65008D02C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58CA155D3A65008D02C2 /* Foundation.framework */; };
 		0AAC58CD155D3A65008D02C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58CC155D3A65008D02C2 /* CoreGraphics.framework */; };
@@ -69,6 +73,10 @@
 		0A5B4B4017252ECA00F43382 /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
 		0A5B4B4117252ECA00F43382 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
 		0A64D5ED19D6CD3000B3231D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0A7B45D31A10C3E700661C44 /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ffmpeg/libavcodec.a; sourceTree = "<group>"; };
+		0A7B45D41A10C3E700661C44 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ffmpeg/libavformat.a; sourceTree = "<group>"; };
+		0A7B45D51A10C3E700661C44 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ffmpeg/libavutil.a; sourceTree = "<group>"; };
+		0A7B45D61A10C3E700661C44 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ffmpeg/libswresample.a; sourceTree = "<group>"; };
 		0AAC58C4155D3A65008D02C2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAC58C8155D3A65008D02C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0AAC58CA155D3A65008D02C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,16 +121,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1CE11E179E991000AA33D6 /* libiconv.dylib in Frameworks */,
+				0A7B45DA1A10C3E700661C44 /* libswresample.a in Frameworks */,
 				0A46522A16A6DD3B0055687E /* libz.dylib in Frameworks */,
 				0A46522716A6DD290055687E /* libxml2.dylib in Frameworks */,
 				0A46520916A6DAEE0055687E /* AVFoundation.framework in Frameworks */,
+				0A7B45D91A10C3E700661C44 /* libavutil.a in Frameworks */,
 				0AEAC3D116109B8700AEAB20 /* MediaPlayer.framework in Frameworks */,
 				0AAC5938155D3B6E008D02C2 /* SystemConfiguration.framework in Frameworks */,
 				0AAC5936155D3B65008D02C2 /* AudioToolbox.framework in Frameworks */,
+				0A7B45D81A10C3E700661C44 /* libavformat.a in Frameworks */,
 				0AAC58C9155D3A65008D02C2 /* UIKit.framework in Frameworks */,
 				0AAC58CB155D3A65008D02C2 /* Foundation.framework in Frameworks */,
 				0AAC58CD155D3A65008D02C2 /* CoreGraphics.framework in Frameworks */,
 				0AD4EDF8170EC355005A92FF /* RadioTunes.framework in Frameworks */,
+				0A7B45D71A10C3E700661C44 /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +170,10 @@
 		0AAC58C7155D3A65008D02C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A7B45D31A10C3E700661C44 /* libavcodec.a */,
+				0A7B45D41A10C3E700661C44 /* libavformat.a */,
+				0A7B45D51A10C3E700661C44 /* libavutil.a */,
+				0A7B45D61A10C3E700661C44 /* libswresample.a */,
 				0AD4EDF7170EC355005A92FF /* RadioTunes.framework */,
 				0A46520816A6DAEE0055687E /* AVFoundation.framework */,
 				0AEAC3D016109B8700AEAB20 /* MediaPlayer.framework */,
@@ -403,7 +419,10 @@
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = NO;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ffmpeg",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-Objc",
@@ -430,7 +449,10 @@
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = NO;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ffmpeg",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-Objc",

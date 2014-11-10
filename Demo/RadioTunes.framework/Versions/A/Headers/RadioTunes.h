@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "YLRadioTunes.h"
+#import "YLRadioBase.h"
 #import "YLRadio.h"
 #import "YLHTTPRadio.h"
 #import "YLMMSRadio.h"
