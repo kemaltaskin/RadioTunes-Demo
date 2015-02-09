@@ -15,6 +15,9 @@
 + (NSString *)version;
 
 - (void)setLicenseKey:(NSString *)licenseKey;
+- (void)setLicenseKey:(NSString *)licenseKey withActivationKey:(NSString *)activationKey;
+
 - (NSString *)licenseKey;
+- (NSString *)activationKey;
 
 @end
