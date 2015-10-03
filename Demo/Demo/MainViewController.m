@@ -78,9 +78,9 @@
         
         _recordingCounter = [_recordings count] + 1;
         
-        [_radioNames addObject:@"CNN TV"];
+        [_radioNames addObject:@"Metro FM"];
         [_radioSubtitles addObject:@"mms wma stream"];
-        [_radioStations addObject:@"mmsh://a466.l3760630465.c37606.g.lm.akamaistream.net/D/466/37606/v0001/reflector:30465"];
+        [_radioStations addObject:@"mms://196.35.64.36/metrofm_16"];
         
         [_radioNames addObject:@"BBC Radio 1"];
         [_radioSubtitles addObject:@"http asx mms wma stream"];
@@ -145,11 +145,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-#endif
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     if([[UIScreen mainScreen] scale] >= 2.0 && [[UIScreen mainScreen] bounds].size.height > 480) {
         [_bgImageView setImage:[UIImage imageNamed:@"bg-i5.png"]];
