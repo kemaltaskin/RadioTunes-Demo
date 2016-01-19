@@ -82,9 +82,13 @@
         [_radioSubtitles addObject:@"mms wma stream"];
         [_radioStations addObject:@"mms://196.35.64.36/metrofm_16"];
         
-        [_radioNames addObject:@"BBC Radio 1"];
-        [_radioSubtitles addObject:@"http asx mms wma stream"];
-        [_radioStations addObject:@"http://www.bbc.co.uk/radio/listen/live/r1.asx"];
+        [_radioNames addObject:@"Studio Brussel"];
+        [_radioSubtitles addObject:@"http mp3 stream"];
+        [_radioStations addObject:@"http://mp3.streampower.be/stubru-high.mp3"];
+        
+        [_radioNames addObject:@"MNM"];
+        [_radioSubtitles addObject:@"http mp3 stream"];
+        [_radioStations addObject:@"http://mp3.streampower.be/mnm-high.mp3"];
         
         [_radioNames addObject:@"Boost.FM"];
         [_radioSubtitles addObject:@"http mp3 stream"];
