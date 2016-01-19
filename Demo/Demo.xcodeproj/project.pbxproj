@@ -26,6 +26,7 @@
 		0A7B45D81A10C3E700661C44 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7B45D41A10C3E700661C44 /* libavformat.a */; };
 		0A7B45D91A10C3E700661C44 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7B45D51A10C3E700661C44 /* libavutil.a */; };
 		0A7B45DA1A10C3E700661C44 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7B45D61A10C3E700661C44 /* libswresample.a */; };
+		0A8209961C4E2E0800A09A5A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8209951C4E2E0800A09A5A /* Security.framework */; };
 		0AAC58C9155D3A65008D02C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58C8155D3A65008D02C2 /* UIKit.framework */; };
 		0AAC58CB155D3A65008D02C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58CA155D3A65008D02C2 /* Foundation.framework */; };
 		0AAC58CD155D3A65008D02C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC58CC155D3A65008D02C2 /* CoreGraphics.framework */; };
@@ -77,6 +78,7 @@
 		0A7B45D41A10C3E700661C44 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ffmpeg/libavformat.a; sourceTree = "<group>"; };
 		0A7B45D51A10C3E700661C44 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ffmpeg/libavutil.a; sourceTree = "<group>"; };
 		0A7B45D61A10C3E700661C44 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ffmpeg/libswresample.a; sourceTree = "<group>"; };
+		0A8209951C4E2E0800A09A5A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0AAC58C4155D3A65008D02C2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAC58C8155D3A65008D02C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0AAC58CA155D3A65008D02C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -120,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A8209961C4E2E0800A09A5A /* Security.framework in Frameworks */,
 				0A1CE11E179E991000AA33D6 /* libiconv.dylib in Frameworks */,
 				0A7B45DA1A10C3E700661C44 /* libswresample.a in Frameworks */,
 				0A46522A16A6DD3B0055687E /* libz.dylib in Frameworks */,
@@ -170,6 +173,7 @@
 		0AAC58C7155D3A65008D02C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A8209951C4E2E0800A09A5A /* Security.framework */,
 				0A7B45D31A10C3E700661C44 /* libavcodec.a */,
 				0A7B45D41A10C3E700661C44 /* libavformat.a */,
 				0A7B45D51A10C3E700661C44 /* libavutil.a */,
